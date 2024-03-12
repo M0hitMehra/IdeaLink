@@ -18,7 +18,7 @@ const images = [
 export const create = mutation({
     args: {
         orgId: v.string(),
-        tite: v.string(),
+        title: v.string(),
     },
     handler: async (ctx, args) => {
         const identity = await ctx.auth.getUserIdentity()
@@ -28,7 +28,7 @@ export const create = mutation({
 
         const randomImage = images[Math.floor(Math.random() * images.length)]
         const board = await ctx.db.insert("boards", {
-            title: args.tite,
+            title: args.title,
             orgId: args.orgId,
             authorId: identity.subject,
             authorName: identity.name!,
