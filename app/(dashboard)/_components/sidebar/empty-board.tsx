@@ -16,7 +16,7 @@ const EmptyBoard = () => {
         if (!organization) return
         mutate({
             orgId: organization.id,
-            tite: "Untitled",
+            title: "Untitled",
         })
             .then((id) =>
                 toast.success("Board created successfully")
