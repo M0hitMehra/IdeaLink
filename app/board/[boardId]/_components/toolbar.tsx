@@ -1,4 +1,4 @@
- import React from 'react'
+import React from 'react'
 
 const Toolbar = () => {
     return (
@@ -28,7 +28,7 @@ const Toolbar = () => {
 export default Toolbar
 
 
-Toolbar.Skeleton = function ToolbarSkeleton() {
+export const ToolbarSkeleton = () => {
 
     return (
         <div className=' absolute top-[50%] -translate-y-[50%] left-2 flex flex-col gap-y-4 bg-white h-[360px] w-[52px] shadow-md rounded-md ' />
