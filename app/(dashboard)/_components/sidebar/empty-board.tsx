@@ -29,7 +29,7 @@ const EmptyBoard = () => {
     }
     return (
         <div className=' h-full flex justify-center items-center flex-col'>
-            <Image src={"/note.svg"} alt='Empty Boards' height={200} width={200} className=' drop-shadow-2xl' />
+            <Image src={"/logo.svg"} alt='Empty Boards' height={200} width={200} className=' drop-shadow-2xl' />
             <h2 className=' text-2xl font-semibold mt-6'>
                 Create your first board
             </h2>
