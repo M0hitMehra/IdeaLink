@@ -6,6 +6,7 @@ import Toolbar from './toolbar'
 import { useCanRedo, useCanUndo, useHistory, useSelf } from '@/liveblocks.config'
 import Info from './info'
 import { CanvasMode, CanvasState } from '@/types/Canvas'
+import {CursorPresence} from "../_components/cursor-presence.jsx"
 
 interface CanvasProps {
     boardId: string
@@ -32,6 +33,11 @@ const Canvas = ({ boardId }: CanvasProps) => {
                 undo={history.undo}
                 redo={history.redo}
             />
+            <svg className=' h-[100vh] w-[100vw] '>
+                <g>
+                    <CursorPresence />
+                </g>
+            </svg>
         </main>
     )
 }
