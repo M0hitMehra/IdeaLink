@@ -10,10 +10,12 @@ interface RoomProps {
     fallback: NonNullable<ReactNode> | null,
 }
 
-const Room = ({ children, roomId ,fallback}: RoomProps) => {
-    
+const Room = ({ children, roomId, fallback }: RoomProps) => {
+
     return (
-        <RoomProvider id={roomId} initialPresence={{}}>
+        <RoomProvider id={roomId} initialPresence={{
+            cursor: null
+        }}>
             <ClientSideSuspense fallback={fallback}>
                 {() => children}
             </ClientSideSuspense>
