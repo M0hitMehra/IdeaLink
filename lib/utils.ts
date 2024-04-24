@@ -46,25 +46,25 @@ export function resizeBounds(
     height: bounds.height
   }
 
-  if ((corner && Side.Left) === Side.Left) {
+  if ((corner & Side.Left) === Side.Left) {
     result.x = Math.min(point.x, bounds.x + bounds.width)
     result.width = Math.abs(bounds.x + bounds.width - point.x)
   }
 
-  if ((corner && Side.Right) === Side.Right) {
+  if ((corner & Side.Right) === Side.Right) {
     result.x = Math.min(point.x, bounds.x)
     result.width = Math.abs(point.x - bounds.x)
   }
 
-  if ((corner && Side.Top) === Side.Top) {
+  if ((corner & Side.Top) === Side.Top) {
     result.x = Math.min(point.y, bounds.y + bounds.height)
-    result.width = Math.abs(bounds.y + bounds.height - point.y)
+    result.height = Math.abs(bounds.y + bounds.height - point.y)
   }
 
-  if ((corner && Side.Bottom) === Side.Bottom) {
+  if ((corner & Side.Bottom) === Side.Bottom) {
     result.x = Math.min(point.y, bounds.y)
-    result.width = Math.abs(bounds.y - point.y)
+    result.height = Math.abs(point.y - bounds.y)
   }
-
+  return result
 
 }
