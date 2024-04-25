@@ -57,12 +57,12 @@ export function resizeBounds(
   }
 
   if ((corner & Side.Top) === Side.Top) {
-    result.x = Math.min(point.y, bounds.y + bounds.height)
+    result.y = Math.min(point.y, bounds.y + bounds.height)
     result.height = Math.abs(bounds.y + bounds.height - point.y)
   }
 
   if ((corner & Side.Bottom) === Side.Bottom) {
-    result.x = Math.min(point.y, bounds.y)
+    result.y = Math.min(point.y, bounds.y)
     result.height = Math.abs(point.y - bounds.y)
   }
   return result
