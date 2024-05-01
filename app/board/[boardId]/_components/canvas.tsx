@@ -38,7 +38,7 @@ const Canvas = ({ boardId }: CanvasProps) => {
     const insertLayer = useMutation((
         { storage, setMyPresence },
         layerType: LayerType.Ellipse | LayerType.Rectangle | LayerType.Text | LayerType.Note,
-        position: Point
+        position: Point,
     ) => {
         const livelayers = storage.get("layers")
         if (livelayers.size >= MAX_LAYERS) {
@@ -107,7 +107,7 @@ const Canvas = ({ boardId }: CanvasProps) => {
             current: current
         })
 
-        
+
     }, [])
 
     const startMultiSelection = useCallback((current: Point, origin: Point) => {
@@ -196,7 +196,7 @@ const Canvas = ({ boardId }: CanvasProps) => {
         }
 
         else if (canvasState.mode === CanvasMode.Inserting) {
-            insertLayer(canvasState.layerType, point)
+            insertLayer(canvasState.layerType, point);    
         } else {
             setCanvasState({
                 mode: CanvasMode.None
