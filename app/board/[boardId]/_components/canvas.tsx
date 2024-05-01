@@ -196,7 +196,7 @@ const Canvas = ({ boardId }: CanvasProps) => {
         }
 
         else if (canvasState.mode === CanvasMode.Inserting) {
-            insertLayer(canvasState.layerType, point);
+            insertLayer(canvasState.layerType, point);    
         } else {
             setCanvasState({
                 mode: CanvasMode.None
