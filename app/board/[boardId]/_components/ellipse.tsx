@@ -1,3 +1,4 @@
+import { colorToCss } from "@/lib/utils";
 import { EllipseLayer } from "@/types/Canvas";
 
 
@@ -14,20 +15,20 @@ const Ellipse = ({ id, selectionColor, layer, onPointerDown }: EllipsePoprs) => 
     const { x, y, width, height, fill } = layer
 
     return (
-        <circle
+        <ellipse
             className=" drop-shadow-md"
             onPointerDown={(e) => onPointerDown(e, id)}
             style={{
                 transform: `translate(${x}px, ${y}px)`
             }}
-            cx={0}
-            cy={0}
-            r={5}
-            height={height}
-            width={width}
-            fill="#000"
+            cx={width/2}
+            cy={height/2}
+            rx={width/2}
+            ry={height/2}
+            fill={fill ? colorToCss(fill) : "#0b3c7f"}
             strokeWidth={1}
-            stroke="transparent"
+            stroke={selectionColor || "transparent"}
+
         />
 
     )

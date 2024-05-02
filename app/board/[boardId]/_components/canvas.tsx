@@ -7,7 +7,7 @@ import { useCanRedo, useCanUndo, useHistory, useMutation, useOthersMapped, useSe
 import Info from './info'
 import { Camera, CanvasMode, CanvasState, Color, LayerType, Point, Side, XYWH } from '@/types/Canvas'
 import { CursorPresence } from "../_components/cursor-presence.jsx"
-import { connectionIdToColor, pointerEventToCanvasPoint, resizeBounds } from '@/lib/utils'
+import { connectionIdToColor, findIntersectingLayersWithRectangle, pointerEventToCanvasPoint, resizeBounds } from '@/lib/utils'
 import { nanoid } from "nanoid"
 import { LiveObject } from '@liveblocks/client'
 import LayerPreview from './layer-preview'
@@ -107,8 +107,11 @@ const Canvas = ({ boardId }: CanvasProps) => {
             current: current
         })
 
+        const ids = findIntersectingLayersWithRectangle(layerIds, layers, origin, current)
 
-    }, [])
+        setMyPresence({ selection: ids })
+
+    }, [layerIds])
 
     const startMultiSelection = useCallback((current: Point, origin: Point) => {
         if (Math.abs(current.x - origin.x) + Math.abs(current.y - origin.y) > 5) {
@@ -196,7 +199,7 @@ const Canvas = ({ boardId }: CanvasProps) => {
         }
 
         else if (canvasState.mode === CanvasMode.Inserting) {
-            insertLayer(canvasState.layerType, point);    
+            insertLayer(canvasState.layerType, point);
         } else {
             setCanvasState({
                 mode: CanvasMode.None
@@ -283,6 +286,17 @@ const Canvas = ({ boardId }: CanvasProps) => {
                     <SelectionBox
                         onResizeHandlePointerDown={onResizeHandlePointerDown}
                     />
+                    {
+                        canvasState.mode === CanvasMode.SelectionNet && canvasState.current != null && (
+                            <rect
+                                className=' fill-blue-500/5 stroke-blue-500 stroke-1'
+                                x={Math.min(canvasState.origin.x, canvasState.current?.x)}
+                                y={Math.min(canvasState.origin.y, canvasState.current?.y)}
+                                width={Math.abs(canvasState.origin.x - canvasState.current.x)}
+                                height={Math.abs(canvasState.origin.y - canvasState.current.y)}
+                            />
+                        )
+                    }
                     <CursorPresence />
                 </g>
             </svg>

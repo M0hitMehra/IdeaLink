@@ -14,9 +14,18 @@ interface LayerPreviewProps {
 
 const LayerPreview = memo(({ id, onLayerPointerDown, selectionColor }: LayerPreviewProps) => {
     const layer = useStorage(root => root.layers.get(id))
-     if (!layer) return null;
+    if (!layer) return null;
 
     switch (layer.type) {
+        case LayerType.Ellipse:
+            return (
+                <Ellipse
+                    id={id}
+                    layer={layer}
+                    onPointerDown={onLayerPointerDown}
+                    selectionColor={selectionColor}
+                />
+            )
         case LayerType.Rectangle:
             return (
                 <Rectangle
@@ -27,15 +36,7 @@ const LayerPreview = memo(({ id, onLayerPointerDown, selectionColor }: LayerPrev
                 />
             )
 
-        case LayerType.Ellipse:
-            return (
-                <Ellipse    
-                    id={id}
-                    layer={layer}
-                    onPointerDown={onLayerPointerDown}
-                    selectionColor={selectionColor}
-                />
-            )
+
 
 
         default:
