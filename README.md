@@ -1,6 +1,6 @@
 Welcome to Idea Link - where creativity knows no bounds!
 
-Idea Link is a dynamic canvas platform that empowers you to bring your imagination to life and collaborate seamlessly with others in real-time.
+Idea Link is a dynamic canvas platform that empowers you to bring your imagination to life and collaborate seamlessly with others in real-time
 
 
 Experience the magic firsthand at : https://idea-link.vercel.app/
